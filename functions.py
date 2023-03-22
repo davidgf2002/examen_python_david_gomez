@@ -80,10 +80,8 @@ def silhouette(lista1, lista2):
 
 
     #Calcular a(i) -> Distancia lista1(i), resto lista1
-    for i in lista1:
-        aux = i - lista1[i+1]
-        print(i)
-        print(i+1)
+    for i in range(0, len(lista1)-1):
+        aux = lista1[i] - lista1[i+1]
         distancia = math.sqrt(abs(math.pow(aux, 2)))
         listaDistanciaA.append(distancia)
 
@@ -121,24 +119,13 @@ def silhouette(lista1, lista2):
 
 
 
-
-'''
 def read_data(nombreFichero):
     atributos = ["type","fixed" "acidity","volatile" "acidity","citric acid","residual sugar","chlorides","free sulfur dioxide","total sulfur dioxide","density","pH","sulphates","alcohol","quality"]
-    dict = []
+    dict = {}
     with open(nombreFichero, 'r') as file:
         reader = csv.reader(file)
         for row in reader:
-
-
-
-        seating = []
-
-        for i in range(self.__num_rows):
-            row = {}
-            for letter in seats:
-                row[letter] = None #letter = clave, None = valor
-                seating.append(row)
-        seating = [ {letter: None for letter in seats} for i in range(self.__num_rows)]
-
-        #seating = [ {letter: None for letter in seats} for i in range(self.__num_rows)]'''
+        
+            for i in atributos:
+                row = {}
+        
