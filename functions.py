@@ -1,9 +1,23 @@
 import csv
 import math
-#type,fixed acidity,volatile acidity,citric acid,residual sugar,chlorides,free sulfur dioxide,total sulfur dioxide,density,pH,sulphates,alcohol,quality
+
+#Ejercicio 2
+def read_data(nombreFichero):
+    atributos = ["type","fixed" "acidity","volatile" "acidity","citric acid","residual sugar","chlorides","free sulfur dioxide","total sulfur dioxide","density","pH","sulphates","alcohol","quality"]
+    dict = []
+    with open(nombreFichero, 'r') as file:
+        reader = csv.reader(file)
+        for row in reader:
+            row = {}
+            for i in atributos:
+                row[i] = row
+                dict.append(row)
+
+    return dict
 
 
 
+#Ejercicio 3
 def split(diccionario):
     #Dos diccionarios vacios para guardar los datos
     diccionarioWhite = {}
@@ -26,6 +40,8 @@ def split(diccionario):
 
 
 
+
+#Ejercicio 4
 def reduce(diccionario, atributo):
     #lista vacia para guardar los datos
     listaValores = []
@@ -41,6 +57,8 @@ def reduce(diccionario, atributo):
 
 
 
+
+#Ejercicio 5
 def silhouette(lista1, lista2):
     #lista que guardará los valores de S(i) para hacer la posterior media
     listaS = []
@@ -61,7 +79,7 @@ def silhouette(lista1, lista2):
     listaDistanciaB = []
 
 
-    #Calcular b(i) -> Distancia lista1(i) y lista2
+    #Calcular b(i) -> Distancia lista1(i) y lista2(j)
     for i in lista1:
         for j in lista2:
             aux = i - j
@@ -74,8 +92,8 @@ def silhouette(lista1, lista2):
     for i in listaDistanciaB:
         sumatorioB = sumatorioB + i
 
+    #Media total b(i)
     mediaB = sumatorioB / len(listaDistanciaB)
-
 
 
 
@@ -92,6 +110,7 @@ def silhouette(lista1, lista2):
     for i in listaDistanciaA:
         sumatorioA = sumatorioA + i
 
+    #Media total a(i)
     mediaA = sumatorioA / len(listaDistanciaA)
 
 
@@ -114,18 +133,4 @@ def silhouette(lista1, lista2):
 
 
 
-
-
-
-
-
-def read_data(nombreFichero):
-    atributos = ["type","fixed" "acidity","volatile" "acidity","citric acid","residual sugar","chlorides","free sulfur dioxide","total sulfur dioxide","density","pH","sulphates","alcohol","quality"]
-    dict = {}
-    with open(nombreFichero, 'r') as file:
-        reader = csv.reader(file)
-        for row in reader:
-        
-            for i in atributos:
-                row = {}
         
