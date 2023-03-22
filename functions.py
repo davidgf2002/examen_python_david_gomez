@@ -39,14 +39,23 @@ def reduce(diccionario, atributo):
     return listaValores
 
 
+
+
 def silhouette(lista1, lista2):
     #lista que guardará los valores de S(i) para hacer la posterior media
     listaS = []
+
+
+    #valores maximos de cada lista
     maximoLista1 = max(lista1)
     maximoLista2 = max(lista2)
+    #FALTA COMPROBAR CUAL DE LOS DOS ES MAYOR
 
+
+    #lista para A(i) y B(i)
     listaDistanciaA = []
     listaDistanciaB = []
+
 
     #Calcular b(i) -> Distancia lista1(i) y lista2
     for i in lista1:
@@ -55,9 +64,28 @@ def silhouette(lista1, lista2):
             distancia = math.sqrt(math.abs(math.pow(aux, 2)))
             distancia.append(listaDistanciaB)
 
+    # FALTA CALCULAR MEDIA
+    sumatorioB = 0
+    mediaB = 0
+    for i in listaDistanciaB:
+        sumatorioB = sumatorioB + i
+
+    mediaB = sumatorioB / len(listaDistanciaB)
+
+
     #Calcular a(i) -> Distancia lista1(i), resto lista1
-    valorIni = lista1[0]
-    for valor in lista1:
+    for i in lista1:
+        aux = lista1[i] - lista1[i+1]
+        distancia = math.sqrt(math.abs(math.pow(aux, 2)))
+        distancia.append(listaDistanciaA)
+        
+
+
+
+
+
+
+
 
 
 '''
