@@ -49,7 +49,11 @@ def silhouette(lista1, lista2):
     #valores maximos de cada lista
     maximoLista1 = max(lista1)
     maximoLista2 = max(lista2)
-    #FALTA COMPROBAR CUAL DE LOS DOS ES MAYOR
+    #Se inicializa el mayor, como uno de los dos anteriores
+    mayor = maximoLista1
+    #Se comprueba si el maximo de la lista2 es mayor que el de la lista1
+    if(maximoLista2 > mayor):
+        mayor = maximoLista2
 
 
     #lista para A(i) y B(i)
@@ -61,10 +65,10 @@ def silhouette(lista1, lista2):
     for i in lista1:
         for j in lista2:
             aux = i - j
-            distancia = math.sqrt(math.abs(math.pow(aux, 2)))
-            distancia.append(listaDistanciaB)
+            distancia = math.sqrt(abs(math.pow(aux, 2)))
+            listaDistanciaB.append(distancia)
 
-    # FALTA CALCULAR MEDIA
+    #Media b(i)
     sumatorioB = 0
     mediaB = 0
     for i in listaDistanciaB:
@@ -73,12 +77,42 @@ def silhouette(lista1, lista2):
     mediaB = sumatorioB / len(listaDistanciaB)
 
 
+
+
     #Calcular a(i) -> Distancia lista1(i), resto lista1
     for i in lista1:
-        aux = lista1[i] - lista1[i+1]
-        distancia = math.sqrt(math.abs(math.pow(aux, 2)))
-        distancia.append(listaDistanciaA)
-        
+        aux = i - lista1[i+1]
+        print(i)
+        print(i+1)
+        distancia = math.sqrt(abs(math.pow(aux, 2)))
+        listaDistanciaA.append(distancia)
+
+
+    #Media a(i)
+    sumatorioA = 0
+    mediaA = 0
+    for i in listaDistanciaA:
+        sumatorioA = sumatorioA + i
+
+    mediaA = sumatorioA / len(listaDistanciaA)
+
+
+
+
+    #Se calcula S y se añade a la lista final
+    valorS = (mediaB - mediaA)/(mayor)
+    listaS.append(valorS)
+
+
+    #Se calcula el coeficiente de Silhouette
+    sumatorioSilhouette = 0
+    for i in listaS:
+        sumatorioSilhouette = sumatorioSilhouette + i
+    
+
+    #Se devuelve el coeficiente de Silhouette (sumatorio/longitud)
+    return sumatorioSilhouette / len(listaS)
+
 
 
 
